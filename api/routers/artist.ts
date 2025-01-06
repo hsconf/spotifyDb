@@ -1,15 +1,15 @@
 import express from 'express';
 import Artist from "../models/Artist";
-import mongoose from "mongoose";
+import {imageUpload} from "../multer";
 
 export const artistRouter = express.Router();
 
-artistRouter.post('/', async (req, res, next) => {
+artistRouter.post('/', imageUpload.single('image'), async (req, res, next) => {
 
     const artistData = {
         name: req.body.name,
         description: req.body.description,
-        image: req.body.image,
+        image: req.file ? 'images' + req.file.filename : null,
     }
     const artist = new Artist(artistData);
 

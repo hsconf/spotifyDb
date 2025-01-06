@@ -34,11 +34,9 @@ albumRouter.post('/', imageUpload.single('image'), async (req, res, next) => {
 
 albumRouter.get('/', async (req, res, next) => {
     const artist = req.query.artist;
-    console.log(artist);
     try {
-        const filter = artist ? {artist: artist} : {};
+        const filter = artist ? {artist} : {};
         const albums = await Album.find(filter);
-        console.log(albums);
         if (albums.length === 0) {
             res.status(404).send({"error": "No Albums"});
         } else {
