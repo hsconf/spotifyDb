@@ -10,7 +10,10 @@ const ArtisSchema = new Schema({
 
     },
     description: String,
-    image: String,
+    image: {
+        type: String,
+        default: null,
+    },
 });
 
 const Artist = mongoose.model('Artist', ArtisSchema);

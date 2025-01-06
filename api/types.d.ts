@@ -1,3 +1,9 @@
+export interface ArtistMutation {
+    name: string;
+    description: string;
+    image: string | null;
+}
+
 export interface TrackMutation {
     album: string;
     name: string;

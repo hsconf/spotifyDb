@@ -1,12 +1,13 @@
 import express from 'express';
 import Artist from "../models/Artist";
 import {imageUpload} from "../multer";
+import {ArtistMutation} from "../types";
 
 export const artistRouter = express.Router();
 
 artistRouter.post('/', imageUpload.single('image'), async (req, res, next) => {
 
-    const artistData = {
+    const artistData: ArtistMutation = {
         name: req.body.name,
         description: req.body.description,
         image: req.file ? 'images' + req.file.filename : null,
