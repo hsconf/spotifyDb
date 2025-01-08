@@ -16,3 +16,9 @@ export interface AlbumMutation {
     releaseDate: string;
     image: string | null;
 }
+
+export interface UserFields {
+    name: string;
+    password: string;
+    token: string;
+}
