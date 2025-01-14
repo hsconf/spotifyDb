@@ -19,7 +19,20 @@ const TrackSchema = new Schema({
         required: [true, 'name is required'],
     },
     duration: String,
+    count: {
+        type: Number,
+        default: 1,
+    }
 });
+
+TrackSchema.pre("save", async function (next) {
+    const album = this.album;
+    const tracks: number = await Track.countDocuments({album: album});
+    console.log(tracks + 1);
+    if (tracks) {
+        this.count = tracks + 1;
+    }
+})
 
 const Track = mongoose.model('Track', TrackSchema);
 export default Track;
