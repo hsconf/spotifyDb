@@ -2,6 +2,7 @@ import express from 'express';
 import Artist from "../models/Artist";
 import {imageUpload} from "../multer";
 import {ArtistMutation} from "../types";
+import mongoose, {Types} from "mongoose";
 
 export const artistRouter = express.Router();
 
@@ -38,12 +39,15 @@ artistRouter.get('/', async (req, res, next) => {
 
 artistRouter.get('/:id', async (req, res, next) => {
     try {
-        const artist = await Artist.findById(req.params.id);
-        if (artist) {
-            res.status(200).send(artist);
-        } else {
-            res.status(404).send({"error": "Not Found"});
+
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            res.status(400).json({ error: "Invalid ID format" });
+            return;
         }
+
+        const artist = await Artist.findById(req.params.id);
+
+        res.status(200).send(artist);
     } catch (e) {
         next(e)
     }

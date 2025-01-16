@@ -52,13 +52,12 @@ trackRouter.get('/', async (req, res, next) => {
 
 trackRouter.get('/:id', async (req, res, next) => {
     try {
-        const almums = await Album.find({"artist": `${req.params.id}`});
-        // const tracks = await Track.findById(filter);
-        if (almums.length === 0) {
+        const albums = await Album.find({"artist": `${req.params.id}`});
+        if (albums.length === 0) {
             res.status(404).send({"error": "No Albums"});
         }
 
-        const almumsId = almums.map(a => a._id);
+        const almumsId = albums.map(a => a._id);
         const tracks = await Track.find({"album": {$in: almumsId}})
         res.status(200).send({
             artist: req.params.id,
