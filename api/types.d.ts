@@ -22,3 +22,9 @@ export interface UserFields {
     password: string;
     token: string;
 }
+
+export interface TrackHistoryType {
+    artist: string;
+    name: string;
+    datetime: string;
+}

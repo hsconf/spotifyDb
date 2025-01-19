@@ -9,6 +9,19 @@ userRouter.post("/", async (req, res, next) => {
             name: req.body.name,
             password: req.body.password,
         })
+
+        const check = await User.findOne({name: req.body.name})
+
+        if (check) {
+            res.status(400).send({
+                status: 40,
+                message: {
+                    error: `User ${req.body.name} already exists`,
+                }
+            });
+            return;
+        }
+
         user.generateToken();
         await user.save()
         res.status(201).send(user);
