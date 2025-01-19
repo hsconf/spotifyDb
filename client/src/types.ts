@@ -26,4 +26,24 @@ export interface Track {
     album: string;
     duration: string;
     count: number;
+    youtube: string | null;
+}
+
+export interface UserMutation {
+    name: string;
+    password: string;
+}
+
+export interface User extends UserMutation {
+    _id: string;
+    token: string;
+}
+
+export type UserResponse = Omit<User, 'password'>
+
+export interface TrackHistory {
+    _id: string;
+    artist: string;
+    name: string;
+    datetime: string;
 }

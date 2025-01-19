@@ -20,7 +20,7 @@ const Tracks = () => {
         <div>
             {tracks.length > 0 ? (
                 tracks.map(track => (
-                        <TrackCard track={track} />
+                        <TrackCard track={track} key={track._id} />
                     ))
             ) : <div className="text-7xl">No tracks</div>}
         </div>
