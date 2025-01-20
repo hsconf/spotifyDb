@@ -80,26 +80,31 @@ const run = async () => {
             album: albumsFix[0]._id,
             name: "Trevor's Anthem",
             duration: "3:45",
+            youtube: null,
         },
         {
             album: albumsFix[0]._id,
             name: "Trevor's Journey",
             duration: "4:10",
+            youtube: null,
         },
         {
             album: albumsFix[1]._id,
             name: "Michael's Symphony",
             duration: "5:20",
+            youtube: "https://www.youtube.com/",
         },
         {
             album: albumsFix[1]._id,
             name: "Michael's Ballad",
             duration: "2:50",
+            youtube: "https://www.youtube.com/",
         },
         {
             album: albumsFix[2]._id,
             name: "Franklin's Groove",
             duration: "3:30",
+            youtube: "https://www.youtube.com/",
         },
     ];
 

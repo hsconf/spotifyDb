@@ -22,7 +22,11 @@ const TrackSchema = new Schema({
     count: {
         type: Number,
         default: 1,
-    }
+    },
+    youtube: {
+        type: String,
+        default: null
+    },
 });
 
 TrackSchema.pre("save", async function (next) {

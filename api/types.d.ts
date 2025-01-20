@@ -8,6 +8,7 @@ export interface TrackMutation {
     album: string;
     name: string;
     duration: string;
+    youtube: string;
 }
 
 export interface AlbumMutation {

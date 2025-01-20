@@ -25,7 +25,7 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
     token: {
         type: String,
         required: true
-    }
+    },
 });
 
 UserSchema.pre('save', async function (next) {
